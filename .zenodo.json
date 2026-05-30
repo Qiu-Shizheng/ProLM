@@ -1,0 +1,19 @@
+{
+  "title": "ProLM: a plasma proteomics foundation model for the general population",
+  "upload_type": "software",
+  "description": "ProLM: a plasma proteomics foundation model for the general population. Nature communications.",
+  "creators": [
+    {
+      "name": "Qiu, Shizheng"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "proteomics",
+    "transformer",
+    "disease prediction",
+    "ProteinBERT",
+    "deep learning"
+  ],
+  "access_right": "open"
+}

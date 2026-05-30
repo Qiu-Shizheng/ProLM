@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use ProLM, please cite the associated article."
+title: "ProLM"
+authors:
+  - family-names: "Qiu"
+    given-names: "Shizheng"
+repository-code: "https://github.com/Qiu-Shizheng/ProLM"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-05-30"
+preferred-citation:
+  type: article
+  title: "ProLM: a plasma proteomics foundation model for the general population"
+  authors:
+    - family-names: "Qiu"
+      given-names: "Shizheng"
+  journal: "Nature communications"

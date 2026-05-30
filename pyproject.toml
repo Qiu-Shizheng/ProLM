@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prolm"
+version = "0.1.0"
+description = "Protein language model fine-tuning utilities for proteomics prediction"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "ProLM contributors"}
+]
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=1.5",
+  "scikit-learn>=1.2",
+  "torch>=2.0",
+  "transformers>=4.35,<5",
+  "tqdm>=4.64"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
