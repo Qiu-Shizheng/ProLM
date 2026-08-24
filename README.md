@@ -5,6 +5,10 @@
 </p>
 
 <p align="center">
+  <a href="https://doi.org/10.5281/zenodo.20457472"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20457472.svg" alt="DOI"></a>
+</p>
+
+<p align="center">
   <a href="#installation">Installation</a> |
   <a href="#quick-start">Quick Start</a> |
   <a href="#input-files">Input Files</a> |
@@ -126,6 +130,24 @@ python -m prolm.finetune \
 
 ## Pretrained Checkpoint
 
+Download the official ProLM v0.1.0 pretrained backbone (about 872 MiB):
+
+```bash
+curl -L \
+  -o prolm_pretrained_v0.1.0.pt \
+  https://github.com/Qiu-Shizheng/ProLM/releases/download/v0.1.0/prolm_pretrained_v0.1.0.pt
+```
+
+Verify the download:
+
+```bash
+echo "58379859214085c2490c5ca97bc169d69317360744d7f24e556755360b505ed3  prolm_pretrained_v0.1.0.pt" \
+  | shasum -a 256 -c -
+```
+
+The checkpoint has 24 transformer layers, hidden size 768, chunk size 512,
+and expects ProteinBERT embeddings with dimension 15,599.
+
 Fine-tune from a pretrained ProLM checkpoint:
 
 ```bash
@@ -133,13 +155,16 @@ python -m prolm.finetune \
   --expression-csv path/to/expression.csv \
   --labels-csv path/to/labels.csv \
   --protein-embeddings path/to/protein_embeddings.npz \
-  --pretrained-checkpoint path/to/prolm_pretrained.pt \
+  --pretrained-checkpoint prolm_pretrained_v0.1.0.pt \
   --output-dir outputs/my_task \
   --unfreeze-last-n-layers 2 \
   --epochs 20 \
   --batch-size 4 \
-  --learning-rate 5e-5
+  --learning-rate 5e-5 \
+  --device cpu
 ```
+
+Use `--device cuda` instead when a CUDA-capable GPU is available.
 
 Layer freezing:
 
