@@ -12,6 +12,7 @@
   <a href="#installation">Installation</a> |
   <a href="#quick-start">Quick Start</a> |
   <a href="#input-files">Input Files</a> |
+  <a href="resources/protein_order.txt">Protein Order</a> |
   <a href="#pretrained-checkpoint">Pretrained Checkpoint</a> |
   <a href="#proteinbert-embeddings">ProteinBERT Embeddings</a>
 </p>
@@ -80,6 +81,11 @@ eid,a1bg,aamdc,aarsd1,abca2,abhd14b
 3,1.22,0.03,-0.64,0.51,-0.79
 ```
 
+For the pretrained checkpoint, use the [ordered list of 2,885 proteins](resources/protein_order.txt).
+The list contains one protein identifier per line, in the checkpoint's exact order.
+Align expression columns, ProteinBERT embedding rows and both axes of the interaction
+matrix to this list.
+
 ### Disease Labels
 
 Labels are binary by default: `0` for control and `1` for case.
@@ -145,8 +151,9 @@ echo "58379859214085c2490c5ca97bc169d69317360744d7f24e556755360b505ed3  prolm_pr
   | shasum -a 256 -c -
 ```
 
-The checkpoint has 24 transformer layers, hidden size 768, chunk size 512,
-and expects ProteinBERT embeddings with dimension 15,599.
+The checkpoint uses 2,885 proteins in the [provided order](resources/protein_order.txt),
+24 transformer layers, hidden size 768 and chunk size 512. It expects ProteinBERT
+embeddings with dimension 15,599.
 
 Fine-tune from a pretrained ProLM checkpoint:
 
@@ -210,7 +217,7 @@ Fine-tuning uses CUDA by default. To run on CPU:
 python -m prolm.finetune ... --device cpu
 ```
 
-Approximate memory use depends mainly on the checkpoint size, number of proteins, chunk size, and number of unfrozen layers. For a 24-layer, hidden-size 768 checkpoint with about 2,900 proteins and chunk size 512:
+Approximate memory use depends mainly on the checkpoint size, number of proteins, chunk size, and number of unfrozen layers. For a 24-layer, hidden-size 768 checkpoint with 2,885 proteins and chunk size 512:
 
 | Batch size | Unfrozen layers | Approximate GPU memory |
 |---:|---:|---:|
